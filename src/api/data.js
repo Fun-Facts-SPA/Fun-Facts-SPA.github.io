@@ -8,7 +8,7 @@ const endpoints = {
 };
 
 export function getAllFacts() {
-  return get(endpoints.allFacts);
+  return get(`${endpoints.allFacts}?order=createdAt`);
 }
 export function getFactById(id) {
   return get(`${endpoints.facts}${id}`);
