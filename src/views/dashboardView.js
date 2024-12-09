@@ -10,7 +10,7 @@ const factCard = (data) => html` <div class="fact">
   <img src=${data.imageUrl} alt="example3" />
   <h3 class="category">${data.category}</h3>
   <p class="description">${data.description}</p>
-  <a class="details-btn" href="/details/${data.objectId}">More Info</a>
+  <a class="details-btn" href="/details/${data.objectIid}">More Info</a>
 </div>`;
 
 export async function dashboardPage(ctx) {
