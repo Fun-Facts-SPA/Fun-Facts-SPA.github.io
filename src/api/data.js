@@ -1,7 +1,7 @@
 import { get, post, put, del } from "./api.js";
 
 const endpoints = {
-  allFacts: "/data/facts?sortBy=_createdOn%20desc",
+  allFacts: "/classes/funFacts",
   facts: "/data/facts/",
   likes: "/data/likes",
   fact: "/data/facts",
