@@ -16,6 +16,9 @@ const factCard = (data) => html` <div class="fact">
 export async function dashboardPage(ctx) {
   const facts = await getAllFacts();
   const factsArr = JSON.parse(facts);
+  console.log(facts);
+  console.log(factsArr);
   const allFacts = factsArr.results;
+  console.log(allFacts);
   ctx.render(dashboardTemplate(allFacts));
 }
