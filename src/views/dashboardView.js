@@ -15,5 +15,7 @@ const factCard = (data) => html` <div class="fact">
 
 export async function dashboardPage(ctx) {
   const allFacts = await getAllFacts();
-  ctx.render(dashboardTemplate(allFacts.results));
+  console.log(allFacts);
+  console.log(allFacts.results);
+  // ctx.render(dashboardTemplate(allFacts.results));
 }
