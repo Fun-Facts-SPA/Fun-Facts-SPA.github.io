@@ -53,10 +53,10 @@ export async function detailsPage(ctx) {
   if (!user) {
     factData.control = "guest";
   }
-  if (user && user._id === factData._ownerId) {
+  if (user && user._id === factData.ownerId) {
     factData.control = "owner";
   }
-  if (user && user._id !== factData._ownerId) {
+  if (user && user._id !== factData.ownerId) {
     factData.control = "user";
   }
   ctx.render(detailsTemplate(factData, onDelete, onLike));
