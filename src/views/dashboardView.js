@@ -10,10 +10,12 @@ const factCard = (data) => html` <div class="fact">
   <img src=${data.imageUrl} alt="example3" />
   <h3 class="category">${data.category}</h3>
   <p class="description">${data.description}</p>
-  <a class="details-btn" href="/details/${data._id}">More Info</a>
+  <a class="details-btn" href="/details/${data.objectId}">More Info</a>
 </div>`;
 
 export async function dashboardPage(ctx) {
-  const allFacts = await getAllFacts();
+  const facts = await getAllFacts();
+  const factsArr = JSON.parse(facts);
+  const allFacts = factsArr.results;
   ctx.render(dashboardTemplate(allFacts));
 }
