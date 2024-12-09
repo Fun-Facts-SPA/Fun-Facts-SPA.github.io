@@ -17,5 +17,5 @@ export async function dashboardPage(ctx) {
   const allFacts = await getAllFacts();
   console.log(allFacts);
   console.log(allFacts.results);
-  // ctx.render(dashboardTemplate(allFacts.results));
+  ctx.render(dashboardTemplate(allFacts.results));
 }
