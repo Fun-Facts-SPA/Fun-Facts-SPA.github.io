@@ -1,21 +1,37 @@
 import { get, post, put, del } from "./api.js";
 
 const endpoints = {
-  allFacts: "/classes/funFacts",
-  facts: "/data/facts/",
+  facts: "/classes/funFacts",
   likes: "/data/likes",
   fact: "/data/facts",
 };
 
 export function getAllFacts() {
-  return get(`${endpoints.allFacts}?order=createdAt`);
+  return get(`${endpoints.facts}?order=createdAt`);
 }
+
 export function getFactById(id) {
-  return get(`${endpoints.facts}${id}`);
+  return get(`${endpoints.facts}/${id}`);
 }
+
+export function createFact(data) {
+  const user = getUserData();
+  data.ownerId = {
+    __type: "Pointer",
+    className: "_User",
+    objectId: user.objectId,
+  };
+  return post(endpoints.facts, data);
+}
+
+export function editFact(id, data) {
+  return put(`${endpoints.facts}/${id}`, data);
+}
+
 export function deleteFactById(id) {
-  return del(`${endpoints.facts}${id}`);
+  return del(`${endpoints.facts}/${id}`);
 }
+
 export function likeFact(factId) {
   return post(endpoints.likes, { factId });
 }
@@ -28,10 +44,4 @@ export function getAllLikes(factId) {
   return get(
     `${endpoints.likes}?where=factId%3D%22${factId}%22&distinct=_ownerId&count`
   );
-}
-export function createFact(data) {
-  return post(endpoints.fact, data);
-}
-export function editFact(id, data) {
-  return put(`${endpoints.facts}${id}`, data);
 }
